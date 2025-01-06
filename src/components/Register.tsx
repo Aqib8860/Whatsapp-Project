@@ -4,13 +4,13 @@ const Register = () => {
     return (
         
         <div className="min-h-screen py-20 bg-yellow-100">
-            <div className="container mx-auto max-w-screen-lg bg-yellow-400 py-6 px-4 rounded-md shadow-lg">
+            <div className="container mx-auto max-w-screen-lg bg-yellow-400 py-6 px-4 rounded-md shadow-lg border-b-8 border-yellow-300">
                 <h1 className="text-4xl font-bold text-gray-700 text-center ">
                     Registration
                 </h1>
             </div>
             <br />
-            <div className="container mx-auto max-w-screen-lg bg-yellow-400 py-6 px-4 rounded-md shadow-lg">
+            <div className="container mx-auto max-w-screen-lg bg-yellow-400 py-6 px-4 rounded-md shadow-lg border-8 border-t-0 border-yellow-300">
 
             <form className='space-y-8'> 
                 <div className='flex flex-col md:flex-row justify-around space-y-8 md:space-y-0'>
