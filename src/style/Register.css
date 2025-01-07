@@ -6,3 +6,19 @@
 .form-label {
     @apply font-bold text-xl text-gray-700;
 }
+
+.form-double-input{
+    @apply flex flex-col md:flex-row justify-around space-y-8 md:space-y-0;
+}
+
+.form-container {
+    @apply container mx-auto max-w-screen-lg bg-yellow-400 py-6 px-4 rounded-md shadow-lg border-8 border-t-0 border-yellow-300;
+}
+
+.small-input-box {
+    @apply px-4 py-3 rounded bg-gray-200 mt-3  ;
+}
+
+.large-input-box {
+    @apply px-4 py-3 md:w-full rounded bg-gray-200;
+}
