@@ -30,7 +30,7 @@ const Login = () => {
                         <button className="login-button">LOGIN</button>
                     </div>
                     <br />
-                    <p className='text-md font-serif'>Don't have an account? <a href="/register" className='text-blue-500 underline'>Sign Up</a></p>
+                    <p className='text-md font-serif'>Don't have an account? <a href="/Whatsapp-Project/register" className='text-blue-500 underline'>Sign Up</a></p>
                 </form>
             
             </div>

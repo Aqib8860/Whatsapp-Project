@@ -6,7 +6,7 @@ import Login from './components/Login';
 function App() {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/Whatsapp-Project'>
       <Routes>
         <Route index element={<Login />} />
         <Route path="/register" element={<Register />} />
