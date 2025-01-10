@@ -12,7 +12,7 @@
 }
 
 .form-container {
-    @apply container mx-auto max-w-screen-lg bg-yellow-400 py-6 px-4 rounded-md shadow-lg border-8 border-t-0 border-yellow-300;
+    @apply container mx-auto max-w-screen-lg bg-white py-6 px-4 rounded-lg shadow-lg border-8 border-blue-100;
 }
 
 .small-input-box {

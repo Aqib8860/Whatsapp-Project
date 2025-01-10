@@ -1,14 +1,31 @@
 import { useForm } from 'react-hook-form';
 import '../style/Register.css';
 import User from '../Models.tsx/User';
+import  { checkEmailFromServer, registerUser } from '../services/api-clients';
+import { useState } from 'react';
 
 
 const Register = () => {
+    const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
 
-    const onSubmit = (user: User) => {
-        console.log("Form is submitted", user);
+    const onSubmit = async (user: User) => {
+        const resp = await registerUser(user);
+        
+        if (resp['status'] === 200) {
+            setFormSubmitted(true);
+        }
+
+        console.log("Resp status : ", resp);
     }
 
+    const checkEmail = async (email:string) => {
+        const exists = await checkEmailFromServer(email);
+        if (exists){
+            return 'Email already exists';
+        }
+        return true
+        
+    }
     const getCountries = () => {
         return ["India", "USA", "China"]
     }
@@ -27,10 +44,11 @@ const Register = () => {
     const {register, handleSubmit, formState:{errors}, watch} = useForm<User>();
     const password = watch('password')
 
+    if (!formSubmitted){
     return (
         
-        <div className="min-h-screen py-20 bg-yellow-100">
-            <div className="container mx-auto max-w-screen-lg bg-yellow-400 py-6 px-4 rounded-md shadow-lg border-b-8 border-yellow-300">
+        <div className="min-h-screen py-20 bg-gray-100">
+            <div className="container mx-auto max-w-screen-lg bg-white py-6 px-4 rounded-full shadow-lg border-b-8 border-blue-100">
                 <h1 className="text-4xl font-bold text-gray-700 text-center ">
                     Registration
                 </h1>
@@ -38,6 +56,7 @@ const Register = () => {
             <br />
             
             <div className="form-container">
+                
 
             <form className='space-y-8' onSubmit={handleSubmit(onSubmit)}> 
                 <div className='form-double-input md:space-y-0'>
@@ -109,7 +128,11 @@ const Register = () => {
                         <input type="email" 
                             className={`large-input-box border ${errors.email? 'border-red-400': ''}`} 
                             placeholder="Enter your email"
-                            {...register('email', {required: '*Email is required*', pattern:{value:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, message:'Invalid Email'}})}
+                            {...register('email', {
+                                required: '*Email is required*', 
+                                pattern:{value:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, message:'Invalid Email'},
+                                validate: async (email) => checkEmail(email)
+                            })}
                         />                    
                         {<p className='text-red-500 text-lg'>{errors?.email?.message}</p>}
                     </div>                    
@@ -154,11 +177,26 @@ const Register = () => {
                             Reset
                         </button>
                 </div>
+                <div className='text-center'>
+                    <p className='text-md font-serif'>Already have an account? <a href="/" className='text-blue-500 underline'>LOGIN</a></p>
+                </div>
             </form>                
                 
             </div>
         </div>
     );
+    }
+    else {
+        return (
+            <div className="min-h-screen py-20 bg-gray-100">
+                <div className="container mx-auto max-w-screen-lg bg-white py-6 px-4 rounded-full shadow-lg border-b-8 border-blue-100">
+                    <h1 className="text-4xl font-bold text-gray-700 text-center ">
+                        Registration Success!
+                    </h1>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default Register;
