@@ -1,4 +1,6 @@
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+
 import '../style/Register.css';
 import User from '../Models.tsx/User';
 import  { checkEmailFromServer, registerUser } from '../services/api-clients';
@@ -178,7 +180,7 @@ const Register = () => {
                         </button>
                 </div>
                 <div className='text-center'>
-                    <p className='text-md font-serif'>Already have an account? <a href="/" className='text-blue-500 underline'>LOGIN</a></p>
+                    <p className='text-md font-serif'>Already have an account? <Link to="/" className='text-blue-500 underline'>LOGIN</Link></p>
                 </div>
             </form>                
                 
