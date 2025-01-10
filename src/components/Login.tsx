@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../style/Login.css';
 
 
@@ -30,7 +31,7 @@ const Login = () => {
                         <button className="login-button">LOGIN</button>
                     </div>
                     <br />
-                    <p className='text-md font-serif'>Don't have an account? <a href="/Whatsapp-Project/register" className='text-blue-500 underline'>Sign Up</a></p>
+                    <p className='text-md font-serif'>Don't have an account? <Link to="/register" className='text-blue-500 underline'>Sign Up</Link></p>
                 </form>
             
             </div>
